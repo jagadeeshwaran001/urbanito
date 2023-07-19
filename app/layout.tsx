@@ -1,7 +1,6 @@
-import './globals.css'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import './globals.css';
+import { ThemeProvider } from '@/components/common/ThemeProvider';
+import UrabanitoNavBar from '@/components/layout/UrabanitoNavBar';
 
 export const metadata = {
   title: 'Create Next App',
@@ -15,7 +14,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body>
+        <ThemeProvider>
+          <UrabanitoNavBar />
+          {children}
+          <footer className='bg-slate-500 mt-5 w-full bottom-1 flex'>
+            <div className='flex items-center'>@Copyright</div>
+          </footer>
+        </ThemeProvider>
+      </body>
     </html>
   )
 }
